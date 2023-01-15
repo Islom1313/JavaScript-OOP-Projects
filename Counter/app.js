@@ -1,9 +1,15 @@
 function Counter(element, value) {
-    console.log(element, value);
+    this.counter = element;
+    this.value = value;
+    this.reset = element.querySelector(".reset");
+    this.increaseBtn = element.querySelector(".increase");
+    this.decreaseBtn = element.querySelector(".decrease");
+    this.valueDOM = element.querySelector(".value");
+    this.valueDOM.textContent = this.value;
 }
 
-const firtsCounter = new Counter(getElement(".first-counter"), 1);
-const secondCounter = new Counter(getElement(".second-counter"), 20);
+const firtsCounter = new Counter(getElement(".first-counter"), 0);
+const secondCounter = new Counter(getElement(".second-counter"), 0);
 
 function getElement(selection) {
     const element = document.querySelector(selection);
