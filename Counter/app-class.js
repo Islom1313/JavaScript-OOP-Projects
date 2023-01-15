@@ -18,7 +18,7 @@ class Counter {
         this.valueDOM = element.querySelector(".value");
         this.valueDOM.textContent = this.value;
         // bind this to all functions
-        this.increase = this.increasee.bind(this);
+        this.increase = this.increase.bind(this);
         this.decrease = this.decrease.bind(this);
         this.reset = this.reset.bind(this);
 
@@ -28,7 +28,7 @@ class Counter {
         this.resetBtn.addEventListener("click", this.reset);
     }
 
-    increasee() {
+    increase() {
         this.value++;
         this.valueDOM.textContent = this.value;
     }
