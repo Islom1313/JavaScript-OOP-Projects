@@ -209,9 +209,8 @@ Modal
     background: rgb(0, 0, 0);
     transition: var(--transition);
     opacity: 0;
-    display: grid;
-    place-items: center;
     min-height: 100vh;
+    overflow: scroll;
 }
 
 .modal.open {
@@ -234,7 +233,7 @@ Modal
 .prev-btn {
     position: absolute;
     top: 10rem;
-    right: -2.5rem;
+    right: -2.5;
     transform: translateY(-50%);
     background: transparent;
     font-size: 2rem;
@@ -247,19 +246,11 @@ Modal
     left: -2.5rem;
 }
 
-@media screen and (min-width: 768px) {
-    .prev-btn {
-        left: -4rem;
-    }
-    .next-btn {
-        right: -4rem;
-    }
-}
-
 .modal-content {
     width: 80%;
     max-width: var(--max-width);
     margin: 0 auto;
+    margin-top: 10rem;
     position: relative;
 }
 
@@ -296,4 +287,13 @@ Modal
 
 .modal-img.selected {
     opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+    .prev-btn {
+        left: -4rem;
+    }
+    .next-btn {
+        right: -4rem;
+    }
 }
