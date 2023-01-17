@@ -36,13 +36,14 @@ function Gallery(element) {
 }
 Gallery.prototype.openModal = function(selectedImage, list) {
     this.setMainImage(selectedImage);
-    this.modalImages.innerHtml = list
+    this.modalImages.innerHTML = list
         .map(function(image) {
-            return `<img src= "${
+            return `<img src="${
         image.src
-      }" title="${image.title}" data-id="${image.data.id}" class="${selectedImage.dataset.id === image.dataset.id ? "modal-img selected" : "modal-img"}" >`;
+      }" title="${image.title}" data-id="${image.dataset.id}" class="${selectedImage.dataset.id === image.dataset.id ? "modal-img selected" : "modal-img"}"/>`;
         })
         .join("");
+
     this.modal.classList.add("open");
 };
 
