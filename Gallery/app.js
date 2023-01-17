@@ -14,6 +14,7 @@ function Gallery(element) {
     // target function
     this.modal = getElement(".modal");
     this.mainImg = getElement(".main-img");
+    this.imageName = getElement(".image-name");
     this.modalImages = getElement(".modal-images");
 
     this.closeBtn = getElement(".close-btn");
@@ -27,13 +28,20 @@ function Gallery(element) {
         "click",
         function(e) {
             // self.openModal();
-            this.openModal();
+            if (e.target.classList.contains("img")) {
+                this.openModal(e.target, this.list);
+            }
         }.bind(this)
     );
 }
-Gallery.prototype.openModal = function(e) {
-    // console.log(this);
+Gallery.prototype.openModal = function(selectedImage, list) {
+    this.setMainImage(selectedImage);
     this.modal.classList.add("open");
+};
+
+Gallery.prototype.setMainImage = function(selectedImage) {
+    this.mainImg.src = selectedImage.src;
+    this.imageName.textContent = selectedImage.title;
 };
 
 const nature = new Gallery(getElement(".nature"));
