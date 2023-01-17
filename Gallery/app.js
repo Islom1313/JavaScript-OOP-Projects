@@ -11,7 +11,7 @@ function getElement(selection) {
 function Gallery(element) {
     this.container = element;
     this.list = [...element.querySelectorAll(".img")];
-    // target
+    // target function
     this.modal = getElement(".modal");
     this.mainImg = getElement(".main-img");
     this.modalImages = getElement(".modal-images");
