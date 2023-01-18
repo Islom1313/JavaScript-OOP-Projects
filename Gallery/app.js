@@ -27,6 +27,7 @@ function Gallery(element) {
     this.closeModal = this.closeModal.bind(this);
     this.nextImage = this.nextImage.bind(this);
     this.prevImage = this.prevImage.bind(this);
+    this.chooseImage = this.chooseImage.bind(this);
     this.container.addEventListener(
         "click",
         function(e) {
@@ -37,6 +38,7 @@ function Gallery(element) {
         }.bind(this)
     );
 }
+// Open Modal function
 Gallery.prototype.openModal = function(selectedImage, list) {
     this.setMainImage(selectedImage);
     this.modalImages.innerHTML = list
@@ -51,19 +53,22 @@ Gallery.prototype.openModal = function(selectedImage, list) {
     this.closeBtn.addEventListener("click", this.closeModal);
     this.nextBtn.addEventListener("click", this.nextImage);
     this.prevBtn.addEventListener("click", this.prevImage);
+    this.modalImages.addEventListener("click", this.chooseImage);
 };
-
+// setMainImage function
 Gallery.prototype.setMainImage = function(selectedImage) {
     this.mainImg.src = selectedImage.src;
     this.imageName.textContent = selectedImage.title;
 };
-
+// close Modal function
 Gallery.prototype.closeModal = function() {
     this.modal.classList.remove("open");
     this.closeBtn.removeEventListener("click", this.closeModal);
     this.nextImage.removeEventListener("click", this.nextImage);
     this.prevImage.removeEventListener("click", this.prevImage);
+    this.modalImages.removeEventListener("click", this.chooseImage);
 };
+// NextImage function
 Gallery.prototype.nextImage = function() {
     const selected = this.modalImages.querySelector(".selected");
     const next =
@@ -72,6 +77,7 @@ Gallery.prototype.nextImage = function() {
     next.classList.add("selected");
     this.setMainImage(next);
 };
+// PrevImage function
 Gallery.prototype.prevImage = function() {
     const selected = this.modalImages.querySelector(".selected");
     const prev =
@@ -79,6 +85,17 @@ Gallery.prototype.prevImage = function() {
     selected.classList.remove("selected");
     prev.classList.add("selected");
     this.setMainImage(prev);
+};
+
+// Choose Image function
+Gallery.prototype.chooseImage = function(e) {
+    if (e.target.classList.contains("modal-img")) {
+        const selected = this.modalImages.querySelector(".selected");
+        selected.classList.remove("selected");
+
+        this.setMainImage(e.target);
+        e.target.classList.add("selected");
+    }
 };
 const nature = new Gallery(getElement(".nature"));
 const city = new Gallery(getElement(".city"));
