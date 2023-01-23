@@ -4,7 +4,7 @@ function getElement(selection) {
         return element;
     }
     throw new Error(
-        `Please check "${selection}" selector, no such element exists`
+        `Please check "${selection}" selector, no related element exists`
     );
 }
 
@@ -98,5 +98,6 @@ Gallery.prototype.chooseImage = function(e) {
         e.target.classList.add("selected");
     }
 };
+// Get element of classes in HTML
 const nature = new Gallery(getElement(".nature"));
 const city = new Gallery(getElement(".city"));
