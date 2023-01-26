@@ -1,3 +1,4 @@
+// This is the function created to get elements
 function getElement(selection) {
     const element = document.querySelector(selection);
     if (element) {
